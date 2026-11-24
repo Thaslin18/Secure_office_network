@@ -1,0 +1,38 @@
+IMPLEMENTATION NOTES — Secure Office Network Design
+===================================================
+
+This file is a planning aid. Adapt commands to your topology and Packet Tracer device models.
+Do not copy commands blindly; verify interface names and test each stage.
+
+1) Create VLANs on the switch
+   VLAN 10 — HR
+   VLAN 20 — IT
+   VLAN 30 — SALES
+   VLAN 40 — SERVERS
+
+2) Assign PC/server switch ports to the correct access VLAN.
+3) Configure the switch-router link as a trunk if using router-on-a-stick.
+4) Create router subinterfaces for VLAN 10, 20, 30 and 40 with gateway IPs:
+   192.168.10.1/24, 192.168.20.1/24, 192.168.30.1/24, 192.168.40.1/24.
+5) Configure each end device with an IP in its VLAN subnet and the matching gateway.
+6) Add access-control rules only after documenting which departments need which services.
+7) Apply port security to suitable access ports; shut down unused ports.
+8) Configure secure management (SSH) and restrict it to the IT management subnet.
+9) Save the Packet Tracer file.
+
+Useful verification commands:
+   show vlan brief
+   show interfaces trunk
+   show ip interface brief
+   show running-config
+   show port-security
+   show access-lists
+
+Validation:
+- Ping each PC's own gateway first.
+- Test allowed traffic.
+- Test traffic that should be denied by policy.
+- Capture screenshots of the topology, VLAN table, trunk, routing, and test results.
+
+Add the actual .pkt file as:
+   Secure_Office_Network.pkt
